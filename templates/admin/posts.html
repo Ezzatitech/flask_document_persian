@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+
+{% block title %}همه پست ها | پنل مدیریت{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                {% include 'admin/menu.html' %}
+            </div>
+            <div class="col-lg-9">
+                <div class="grid-plus border">
+                    <h1> همه پست ها</h1>
+
+                    {% include 'inc/msg.html' %}
+
+                    <table class="table ">
+                        <thead class="table-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">عنوان</th>
+                            <th scope="col">تاریخ ایجاد</th>
+                            <th scope="col">تاریخ بروزرسانی</th>
+                            <th scope="col">عملیات</th>
+                            <th scope="col">مشاهده</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for ps in post.items %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ ps.title }}</td>
+                                <td>{{ ps.date }}</td>
+                                <td>{{ ps.update }}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group"
+                                         aria-label="Basic mixed styles example">
+
+                                            <a href="{{ url_for('admin.admin_delete_post', id_post=ps.id) }}" type="button"
+                                               class="btn btn-danger">حذف</a>
+                                        <a href="{{ url_for('admin.admin_edit_post', post_id=ps.id) }}" type="button"
+                                           class="btn btn-success">ویرایش</a>
+                                    </div>
+                                </td>
+                            <td>
+                                <a href="{{ url_for('home.post_get', post_link=ps.link) }}" type="button"
+                                               class="btn btn-sm btn-outline-primary">مشاهده</a>
+                            </td>
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+{{ pagination.links }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+

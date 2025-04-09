@@ -1,0 +1,68 @@
+{% extends 'base/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div id="gridplus" class="grid-plus border">
+                    <h1 class="heding-post">{{ post.title }}</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb" style="margin: 0">
+                            <li class="breadcrumb-item"><a href="#">صفحه اصلی</a></li>
+                            <li class="breadcrumb-item"><a href="#">{{ category.name_lotin }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="grid-plus border">
+                    {% if category.price == 0 %}
+
+                    {{ post.content | safe }}
+                    {% else %}
+                     <p class="alert alert-danger">این قسمت از مستندات "{{ post.title  }}" نیاز به خرید دارد! </p>
+                     <p class="alert alert-info"> با یکبار خرید به تمام قسمت های مستندات {{ category.name_lotin }}دسترسی دارید </p>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+
+                <div id="gridplus" class="grid-plus border">
+                    {% if category.price == 0%}
+
+                    <p class="text-center shadow-none p-3 bg-light rounded">رایگان!</p>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-secondary" type="button">دسترسی کامل دارید</button>
+                    </div>
+
+                    {% else %}
+
+                    <p class="text-center shadow-none p-3 bg-light rounded"> {{ category.price }} تومان</p>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-outline-danger" type="button">خرید مستندات</button>
+                    </div>
+
+                    {% endif %}
+                </div>
+                <br>
+                <div id="list-example" class="list-group">
+                    {% for post_list in post_all %}
+                    <a class="list-group-item list-group-item-action {% if post_list.id == post.id %} active {% endif %}" href="{{ url_for('home.post_get', post_link=post_list.link) }}">{{ post_list.title }}</a>
+                    {% endfor %}
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

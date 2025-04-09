@@ -1,0 +1,18 @@
+{% if form.title.errors %}
+    {% for error in form.title.errors %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endfor %}
+{% endif %}
+
+{% if form.content.errors %}
+    {% for error in form.content.errors %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endfor %}
+{% endif %}
+
+{% if form.link.errors %}
+    {% for error in form.link.errors %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endfor %}
+{% endif %}
+

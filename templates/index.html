@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+
+{% block title %}صفحه اصلی{% endblock title %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <br>
+        <h2 style="font-size: 26px">مستندات جدید</h2>
+        <hr>
+        <br>
+        <div class="row">
+            {% for cat in category %}
+            <div class="col-lg-6" style="margin-bottom: 20px">
+                <div class="card">
+                    <h5 class="card-header">{{ cat.name_lotin }}</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ cat.name }}</h5>
+                        <p class="card-text">{{ cat.content }}</p>
+                        <a href="{{ cat.url }}" class="btn btn-primary">شروع</a>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        <br>
+    <h2 style="font-size: 26px">درس های جدید</h2>
+        <hr>
+        <br>
+        <div class="row">
+            {% for p in post %}
+            <div class="col-lg-6" style="margin-bottom: 20px">
+                <div class="card">
+                    <h5 class="card-header">{% for cat in category_all %}{% if p.cat_id == cat.id %}{{ cat.name_lotin }} {% endif %}{% endfor %}</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.title }}</h5>
+                        <a href="{{ url_for('home.post_get', post_link=p.link) }}" class="btn btn-primary btn-sm">مشاهده</a>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock content %}
+
+

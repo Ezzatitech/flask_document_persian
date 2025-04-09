@@ -1,0 +1,54 @@
+{% extends 'base/base-not.html' %}
+
+{% block title %}ثبت نام{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <section class="row justify-content-center login" style="padding-top: 100px">
+            <div class="col-lg-4">
+                <h1 class="text-center" style="font-size: 32px">مستندات فارسی</h1>
+                <div class="grid-plus border">
+                    {% include 'inc/msg.html' %}
+                    {% include 'inc/form/form-error-register.html' %}
+                    <form action="{{ url_for('users.register') }}" method="post" novalidate>
+                        <form>
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                            <div class="mb-3">
+                                {{ form.name.label(class="form-label") }}
+                                {{ form.name(class="form-control") }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.email.label(class="form-label") }}
+                                {{ form.email(class="form-control") }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.phone.label(class="form-label") }}
+                                {{ form.phone(class="form-control") }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.password.label(class="form-label") }}
+                                {{ form.password(class="form-control") }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form.confirm.label(class="form-label") }}
+                                {{ form.confirm(class="form-control") }}
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">ثبت نام</button>
+
+                        </form>
+                    </form>
+
+                </div>
+                <br>
+                <a href="{{ url_for('home.home') }}">برگشت به صفحه اصلی</a>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

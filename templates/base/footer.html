@@ -1,0 +1,49 @@
+{#<button class="btn btn-toggle btn-day btn-secondary btn-lg">Day</button>#}
+
+
+
+
+<div class="footer-bg" id="footer_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>درباره مستندات فارسی</h4>
+                <p>هدف ما تسهیل در دسترسی برنامه نویسان ایرانی به مستندات کیفیت بالا و آموزش‌های فنی با استفاده از زبان مادریشان است.</p>
+            </div>
+
+            <div class="col-lg-6">
+                <h4>لینک های مفید</h4>
+                <ul>
+                    <li class="li"><a href="{{ url_for('home.documents') }}">همه مستندات</a></li>
+                    <li class="li"><a href="#">تماس با ما</a></li>
+                    <li class="li"><a href="#">محصولات</a></li>
+                    <li class="li"><a href="#">کانال تلگرام</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="tx col-12" >
+                <p class="text-center mb-0">تمامی حقوق برای مستندات فارسی محفوظ است</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ <script src="{{ url_for('static', filename='bootstrap/bootstrap.min.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/prism.js') }}"></script>
+ <script src="{{ url_for('static', filename='js/ckeditor.js') }}"></script>
+
+<script>
+     ClassicEditor.create(document.querySelector('#editor'));
+
+   </script>
+
+ <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+
+</body>
+</html>

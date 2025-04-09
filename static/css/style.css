@@ -1,0 +1,154 @@
+body{
+    font-family: Vazirmatn;
+  direction: rtl;
+  background-color: #F2F6FC;
+}
+
+
+.header {
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #7443FF;
+}
+
+.nav{
+  display: flex;
+  margin: 0;
+  margin-top: 7px;
+  padding: 0;
+}
+
+.nav li{
+  list-style: none;
+  margin-left: 20px;
+}
+
+.nav li a{
+  color: #4F5974;
+  text-decoration: none;
+}
+
+/*.heding-post{*/
+/*  margin: 0;*/
+/*}*/
+
+.grid-plus{
+  margin-top: 28px;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 5px;
+
+}
+.grid-plus h1{
+  font-size: 28px;
+}
+
+.grid-plus p{
+  line-height: 1.7;
+}
+
+.code-toolbar{
+  direction: ltr;
+  border-radius: 5px;
+}
+
+.list-posts{
+  margin: 0;
+  padding: 0;
+}
+
+.list-posts li{
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.list-posts li a{
+  text-decoration: none;
+  color: #7b7e80;
+}
+
+.dark-mode {
+  background-color: #061320;
+  color: #fff;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.light-mode {
+  background-color: #F2F6FC;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.dark-mode-grid{
+    background-color: #0a2139;
+    margin-top: 28px;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.dark-mode-grid h1{
+  font-size: 28px;
+}
+
+.footer-bg {
+
+  background-color: #f8f8f8;
+  border-top: 4px #0d6efd solid;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  margin-top: 42px;
+
+}
+
+.footer-bg a{
+  text-decoration: none;
+}
+
+.footer-bg .tx{
+  background-color: #ececec;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.header .mobilee{
+    display: none;
+}
+
+.nav-mob{
+    margin: 0;
+    padding: 0;
+    padding-right: 15px;
+}
+
+.nav-mob li{
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.nav-mob li a{
+    text-decoration: none;
+}
+
+.header .mobilee .btn-menu{
+    float: left;
+}
+
+@media screen and (max-width: 992px) {
+    .desctops{
+        display: none;
+    }
+
+    .header .mobilee{
+        display: flex;
+    }
+
+}
+
+
+
+

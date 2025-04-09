@@ -1,0 +1,24 @@
+{% if form.title.errors %}
+    {% for error in form.title.errors %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endfor %}
+{% endif %}
+
+{% if form.title_lotin.errors %}
+    {% for error in form.title_lotin.errors %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endfor %}
+{% endif %}
+
+{% if form.slug.errors %}
+    {% for error in form.slug.errors %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endfor %}
+{% endif %}
+
+{% if form.price.errors %}
+    {% for error in form.price.errors %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endfor %}
+
+{% endif %}

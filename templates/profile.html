@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+
+{% block title %}پروفایل{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="grid-plus border">
+            {% include 'inc/msg.html' %}
+
+            {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                    <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+
+            {% if form.phone.errors %}
+                {% for error in form.phone.errors %}
+                    <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <form action="{{ url_for('users.profile') }}" method="POST" novalidate>
+                <form>
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                    <div class="mb-3">
+                        {{ form.name.label(class="form-label") }}
+                        {{ form.name(class="form-control", value=current_user.name) }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.phone.label(class="form-label") }}
+                        {{ form.phone(class="form-control", value=current_user.mobile_number) }}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">ثبت تغییرات</button>
+
+                </form>
+            </form>
+        </div>
+        <br>
+    <h3># تاریخچه تراکنش ها </h3>
+    </div>
+
+{% endblock %}
+
+

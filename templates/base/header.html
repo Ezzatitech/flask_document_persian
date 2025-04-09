@@ -1,0 +1,90 @@
+<header class="header">
+    <div class="container">
+        <div class="row desctops">
+            <div class="col-2">
+                <span class="logo">مستندات فارسی</span>
+            </div>
+            <div class="col-7">
+                <ul class="nav">
+                    <li><a href="{{ url_for('home.home') }}">صفحه اصلی</a></li>
+                    <li><a href="{{ url_for('home.documents') }}">همه مستندات</a></li>
+                    <li><a href="#">فلاسک</a></li>
+                    <li><a href="#">پیشنهاد ها</a></li>
+                </ul>
+            </div>
+            <div class="col-3">
+            <div style="float: left">
+                {% if current_user.is_authenticated %}
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button type="button" class="btn btn-outline-primary"><a style="text-decoration: none;"
+                                                                                 href="
+                                                                                         {% if current_user.is_admin %}{{ url_for('admin.admin') }}{% else %}{{ url_for('users.profile') }}{% endif %}">پنل
+                            کاربری</a>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger"><a
+                                style="text-decoration: none;color: #dc3545"
+                                href="{{ url_for('users.logout') }}">خروج</a></button>
+                    </div>
+                {% else %}
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <button type="button" class="btn btn-outline-primary"><a style="text-decoration: none"
+                                                                                 href="{{ url_for('users.login') }}">ورود</a>
+                        </button>
+                        <button type="button" class="btn btn-outline-primary"><a style="text-decoration: none"
+                                                                                 href="{{ url_for('users.register') }}">ثبت
+                            نام</a></button>
+                    </div>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <div class="row mobilee">
+           <div class="col-12">
+                <span class="logo">مستندات فارسی</span>
+
+
+                <a class="btn btn-outline-secondary btn-menu" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                   aria-controls="offcanvasExample">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                </a>
+
+
+                <div style="width: 300px" class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                     aria-labelledby="offcanvasExampleLabel">
+
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">منو</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                    </div>
+
+                    <div class="offcanvas-body">
+                        <div>
+                            <ul class="nav-mob">
+                                <li><a href="{{ url_for('home.home') }}">صفحه اصلی</a></li>
+                                <li><a href="{{ url_for('home.documents') }}">همه مستندات</a></li>
+                                <li><a href="#">فلاسک</a></li>
+                                {% if current_user.is_authenticated %}
+                                <li><a href="{{ url_for('users.profile') }}">پنل کاربری</a></li>
+                                {% else %}
+                                <li><a href="{{ url_for('users.login') }}">ورود</a></li>
+                                <li><a href="{{ url_for('users.register') }}">ثبت نام</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+           </div>
+
+            </div>
+
+        </div>
+    </div>
+</header>

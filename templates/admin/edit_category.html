@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+
+{% block title %}ویرایش {{ category.name }} | پنل مدیریت{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                {% include 'admin/menu.html' %}
+            </div>
+            <div class="col-lg-9">
+                <div class="grid-plus border">
+                    <h1> {{ category.name }}</h1>
+
+                    {% include 'inc/msg.html' %}
+                    {% include 'inc/form/admin/error-category.html' %}
+
+                    <form action="{{ url_for('admin.admin_category_edit', cat_id=category.id) }}" method="post"
+                          novalidate>
+
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+                        <div class="mb-3">
+                            {{ form.title.label(class="form-label") }}
+                            {{ form.title(class="form-control", value=category.name) }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">خلاصه</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                      name="text_cat">{{ category.content }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.title_lotin.label(class="form-label") }}
+                            {{ form.title_lotin(class="form-control", value=category.name_lotin) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.slug.label(class="form-label") }}
+                            {{ form.slug(class="form-control", value=category.link) }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">لینک معرفی دسته بندی</label>
+                            <input name="url_cat" type="text" class="form-control" id="formGroupExampleInput" value="{{ category.url }}">
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.price.label(class="form-label") }}
+                            {{ form.price(class="form-control", value=category.price) }}
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">بروزرسانی</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

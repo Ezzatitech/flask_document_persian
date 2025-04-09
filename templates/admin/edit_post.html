@@ -1,0 +1,64 @@
+{% extends 'base/base.html' %}
+
+{% block title %}ویرایش پست {{ category_all.name }} | پنل مدیریت{% endblock %}
+
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                {% include 'admin/menu.html' %}
+            </div>
+            <div class="col-lg-9">
+                <div class="grid-plus border">
+                    <h1>ایجاد پست</h1>
+
+                    {% include 'inc/msg.html' %}
+                    {% include 'inc/form/admin/error_post.html' %}
+
+                    <form action="{{ url_for('admin.admin_edit_post', post_id=post.id) }}" method="post" novalidate>
+
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+                        <div class="mb-3">
+                            {{ form.title.label(class="form-label") }}
+                            {{ form.title(class="form-control", value=post.title) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.content.label(class="form-label") }}
+                            <textarea id="editor" class="form-label" name="content">{{ post.content }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form.link.label(class="form-label") }}
+                            {{ form.link(class="form-control", value=post.link) }}
+                        </div>
+
+
+
+                        <div class="mb-3">
+                            <select name="category_id" class="form-select" aria-label="Default select example">
+
+                                {% for cat in category_all %}
+                                    <option value="{{ cat.id }}" {{ 'selected' if post.cat_id == cat.id else ''
+                                            }}>{{ cat.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">بروزرسانی</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+
+{% block title %}ایجاد دسته بندی | پنل مدیریت{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                {% include 'admin/menu.html' %}
+            </div>
+            <div class="col-lg-9">
+                <div class="grid-plus border">
+                <h1>ایجاد دسته بندی</h1>
+
+                 {% include 'inc/msg.html' %}
+                 {% include 'inc/form/admin/error-category.html' %}
+
+                <form action="{{ url_for('admin.admin_category') }}" method="post" novalidate>
+
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+                    <div class="mb-3">
+                        {{ form.title.label(class="form-label") }}
+                        {{ form.title(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.title_lotin.label(class="form-label") }}
+                        {{ form.title_lotin(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.slug.label(class="form-label") }}
+                        {{ form.slug(class="form-control") }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.price.label(class="form-label") }}
+                        {{ form.price(class="form-control") }}
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">ایجاد</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
